@@ -13,7 +13,10 @@ import { useState } from "react";
 
 function App() {
   const [gameStarted, setGameStarted] = useState(false);
-
+  const [selectedNumber, setSelectedNumber] = useState(null);
+  const [dice, setDice] = useState(0);
+  const [score, setScore] = useState(0);
+  const [error, setError] = useState();
   const numbers = [1, 2, 3, 4, 5, 6];
   const dices = [
     { diceImage: "/dice/dice1.png", value: 1 },
@@ -23,6 +26,22 @@ function App() {
     { diceImage: "/dice/dice5.png", value: 5 },
     { diceImage: "/dice/dice6.png", value: 6 },
   ];
+
+  const generateRandomDiceNumber = () => {
+    if (selectedNumber) {
+      let genNumber = Math.ceil(Math.random() * 5) + 1;
+      setDice(genNumber - 1);
+      if (genNumber === selectedNumber) {
+        setScore((prev) => prev + genNumber);
+        setSelectedNumber(null);
+      } else {
+        setScore((prev) => prev - 2);
+        setSelectedNumber(null);
+      }
+    } else {
+      setError("Number not Selected Number");
+    }
+  };
 
   return (
     <>
@@ -35,29 +54,36 @@ function App() {
             h="100vh"
             justify="center"
           >
-            <Heading mb="8">Select Number</Heading>
+            <Heading mb="8" color={error ? "red" : "black"}>
+              {" "}
+              {error ? error : "Select Number"}
+            </Heading>
 
             <Flex justify="space-between" w="600px">
               {numbers.map((number, i) => (
                 <Flex
                   width="50px"
                   height="50px"
-                  bg="black"
+                  bg={selectedNumber === number ? "gray" : "black"}
                   color="white"
                   justify="center"
                   align="center"
                   fontSize="3xl"
                   borderRadius="md"
                   key={i}
+                  onClick={() => {
+                    setSelectedNumber(number);
+                    setError(null);
+                  }}
                 >
                   {number}
                 </Flex>
               ))}
             </Flex>
 
-            <Stack pt="16">
-              <Box>
-                <Image src={dices[0].diceImage} />
+            <Stack pt="16" align="center">
+              <Box h="150px" width="150px" onClick={generateRandomDiceNumber}>
+                <Image src={dices[dice].diceImage} />
               </Box>
               <Text textAlign="center" fontSize="xl">
                 Click on dice to roll
@@ -65,11 +91,12 @@ function App() {
             </Stack>
             <Stack>
               <Text textAlign="center" fontSize="8xl" fontWeight="bold">
-                0
+                {score}
               </Text>
               <Text textAlign="center" fontSize="5xl" fontWeight="bold">
                 Total Score
               </Text>
+              <Button onClick={() => setScore(0)}>Reset Score</Button>
             </Stack>
           </Stack>
           <Stack maxW="1100px" mx="auto" p="8">
