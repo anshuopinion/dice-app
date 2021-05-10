@@ -1,5 +1,6 @@
 import { Button } from "@chakra-ui/button";
 import { Image } from "@chakra-ui/image";
+import { Link } from "@chakra-ui/layout";
 import {
   Box,
   Flex,
@@ -117,24 +118,38 @@ function App() {
                 if You are Wrong Score will be deducted by 2 points
               </ListItem>
             </List>
+            <Box>
+              <Link href="https://youtube.com/dosomecoding">
+                {" "}
+                Join Channel{" "}
+              </Link>
+            </Box>
           </Stack>
         </>
       ) : (
-        <Flex maxW="1100px" justify="center" align="center" mx="auto" h="100vh">
-          <Image src="/dices.png" width="50%" />
-          <Stack>
-            <Heading fontSize="6xl">The Dice Game</Heading>
-            <Button
-              color="white"
-              bg="black"
-              alignSelf="flex-end"
-              _hover={{ bg: "grey" }}
-              onClick={() => setGameStarted(true)}
-            >
-              Play Now
-            </Button>
-          </Stack>
-        </Flex>
+        <>
+          <Flex
+            maxW="1100px"
+            justify="center"
+            align="center"
+            mx="auto"
+            h="100vh"
+          >
+            <Image src="/dices.png" width="50%" />
+            <Stack>
+              <Heading fontSize="6xl">The Dice Game</Heading>
+              <Button
+                color="white"
+                bg="black"
+                alignSelf="flex-end"
+                _hover={{ bg: "grey" }}
+                onClick={() => setGameStarted(true)}
+              >
+                Play Now
+              </Button>
+            </Stack>
+          </Flex>
+        </>
       )}
     </>
   );
