@@ -90,7 +90,12 @@ function App() {
               </Text>
             </Stack>
             <Stack>
-              <Text textAlign="center" fontSize="8xl" fontWeight="bold">
+              <Text
+                textAlign="center"
+                color={score < 0 ? "red" : "green"}
+                fontSize="8xl"
+                fontWeight="bold"
+              >
                 {score}
               </Text>
               <Text textAlign="center" fontSize="5xl" fontWeight="bold">
