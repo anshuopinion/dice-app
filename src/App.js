@@ -39,7 +39,7 @@ function App() {
         setSelectedNumber(null);
       }
     } else {
-      setError("Number not Selected Number");
+      setError("Number not Selected ");
     }
   };
 
@@ -107,7 +107,6 @@ function App() {
           <Stack maxW="1100px" mx="auto" p="8">
             <Heading>Game Rules:-</Heading>
             <List listStyleType="disc">
-              <ListItem>Your will get 5 Chance Only</ListItem>
               <ListItem>Select Number any number</ListItem>
               <ListItem>Click on dice image to roll it</ListItem>
               <ListItem>
