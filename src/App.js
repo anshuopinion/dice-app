@@ -1,6 +1,7 @@
 import { Button } from "@chakra-ui/button";
 import { Image } from "@chakra-ui/image";
 import { ListItem } from "@chakra-ui/layout";
+import { Link } from "@chakra-ui/layout";
 import { List } from "@chakra-ui/layout";
 import { Text } from "@chakra-ui/layout";
 import { Box, Flex, Heading, Stack } from "@chakra-ui/layout";
@@ -106,8 +107,12 @@ const App = () => {
                 same point of dice
               </ListItem>
               <ListItem>
-                Select number is equal to obtained dice result then you will get
-                same point of dice
+                if You are Wrong Score will be deducted by 2 points
+              </ListItem>
+              <ListItem>
+                <Link href="https://www.youtube.com/dosomecoding">
+                  Join channel
+                </Link>
               </ListItem>
             </List>
           </Stack>
