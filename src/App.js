@@ -4,7 +4,7 @@ import { ListItem } from "@chakra-ui/layout";
 import { List } from "@chakra-ui/layout";
 import { Text } from "@chakra-ui/layout";
 import { Box, Flex, Heading, Stack } from "@chakra-ui/layout";
-import { getNodeText } from "@testing-library/dom";
+
 import { useState } from "react";
 const App = () => {
   const [gameStarted, setGameStarted] = useState(false);
